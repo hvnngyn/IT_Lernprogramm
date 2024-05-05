@@ -1,6 +1,30 @@
+/*Color Palette 
+Pale Blue:
+#E8F0FA
+#CEE0F4
+#A7C1E1
+#84A1C4
+#607B9B
+
+December green #008770
+Lavender Haze rosa #E2C5C5
+Cashmere #E94C42
+Holly Beryy #FDD9D5
+Petunia #FC9F9D
+Snowflake #AFCFCC
+*/
+
+.body{
+    display: flex;
+    min-height: 100vh;
+    flex-direction: row;
+    margin: .5rem 1rem;
+}
+
 .main{
     display: flex;
-    background-color: pink;
+    flex: 1;
+    background-color:#E8F0FA;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
@@ -12,21 +36,35 @@
 }
 
 .footer{
-    display: flex;
+    padding: 1rem;
     background-color: antiquewhite;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .header{
     display: flex;
-    background-color: azure;
+    background-color: white;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
 }
 
-.aside{
+.section{
     display: flex;
-    float: right;
-    background-color:aqua;
+    flex-direction: row;
+    background-color:#CEE0F4;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
 }
 
+header, main, nav, aside, footer {
+    
+    padding: 0.5em;
+}
+
+.button{
+
+}
+
+@media all and (min-width:30em){
+
+}
