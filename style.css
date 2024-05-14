@@ -12,59 +12,145 @@ Cashmere #E94C42
 Holly Beryy #FDD9D5
 Petunia #FC9F9D
 Snowflake #AFCFCC
+
+4DAA57 gelb
+FCCA46 grün 
+EFA9AE pink
+90C2E7 blau
+4E598C dunkelblau
+AFD5AA grün türkis
+0C7C59 dunkelgrün
 */
 
 .body{
-    display: flex;
-    min-height: 100vh;
-    flex-direction: row;
-    margin: .5rem 1rem;
+    
+    
 }
 
 .main{
     display: flex;
-    flex: 1;
+    min-height: 70vh;
+    flex-direction: column;
+    padding: 20px;
     background-color:#E8F0FA;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-
-.nav{
-    display:flex;
-    background-color: aliceblue;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    
-}
-
-.footer{
-    padding: 1rem;
-    background-color: antiquewhite;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 0 auto;
 }
 
 .header{
     display: flex;
     background-color: white;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    text-align: center;
+    flex-direction: column;
+    padding: 20px;
+    margin: 0;
+
 }
 
-.section{
-    display: flex;
+.nav1{
+    display:flex;
+    background-color:#E8F0FA;
     flex-direction: row;
-    background-color:#CEE0F4;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 0 auto;
+    margin: 10px;
+    overflow: auto;
     
 }
 
-header, main, nav, aside, footer {
+.nav2{
+    display:flex;
+    background-color:#E8F0FA;
+    flex-direction: column;
+    margin: 0 auto;
+    margin: 10px;
+    overflow: auto; 
+}
+
+.footer{
+    padding: 1rem;
+    background-color:#84A1C4;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+    margin: 0 auto;
+}
+
+.section1{
+    display: block;
+    flex-direction: column;
+    background-color:white;
+    margin:auto;
+    padding: 5px;
+    overflow: auto;
     
-    padding: 0.5em;
+    min-block-size: 20vh ;
+
+}
+.section2{
+    display: block;
+    flex-direction: column;
+    background-color:white;
+    margin:auto;
+    padding: 5px;
+    overflow: auto;
+    min-height: 20vh;
+    
+
+}
+
+.header, .main, .nav1,.nav2, .aside, .div1{
+    
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+}
+
+
+.h1{
+
+    font-size: 60px;
+    text-align: center;
+    margin:0 auto;
+    font-weight:bold;
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+.h3{
+    
+    font-size: 15px;
+    text-align: center;
+    margin:0 auto;
+    padding-bottom: 20px;
+
+}
+
+.div1{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    overflow: auto;
+    margin: 12px;
 }
 
 .button{
 
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 0%;
+    cursor: pointer;
+    border: none;
 }
 
-@media all and (min-width:30em){
+@media all and (max-width:40em){
+    
+    nav{
+        flex-direction: column;
+    }
+}
+
+.fragecontainer{
+    display:block;
+
+}
+
+.antwortcontainer{
 
 }
