@@ -22,10 +22,6 @@ AFD5AA grün türkis
 0C7C59 dunkelgrün
 */
 
-.body{
-    
-    
-}
 
 .main{
     display: flex;
@@ -154,7 +150,7 @@ AFD5AA grün türkis
 
 @media all and (max-width:40em){
     
-    nav{
+    .main, .nav1, .nav2, .aside, .div1{
         flex-direction: column;
     }
 }

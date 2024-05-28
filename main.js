@@ -23,7 +23,7 @@ function loadQuestion() {
 
       question = data['teil-allgemein'].slice(0); // kopiert den Datensatz von teil-allgemein in questions
 
-      shuffleQuestions(question);
+      shuffle(question);
 
       question = question.slice(0,questionPerRound); // nimmt die ersten 10 Fragen
 
@@ -58,5 +58,35 @@ function displayQuestion() {
 
     frageElement.textcontent = currentQuestion;
 
+    const shuffledAnswers = shuffle(currentQuestion['l'].slice(0));
+
+    const correctId = shuffledanswers.indexOf(correctAnswer);
+
+    shuffledAnswers[correctId] = currentQuestion['a'];
+
+    antwortConatiner.innerHTML = '';
+
+    shuffledAnswers.forEach((answer, i) => {
+
+      const antwortButton = document.createElement('button');
+
+      antwortButton.textContent = answer;
+
+      antwortButton.addEventListener('click', () => handleAnswer(i, antwortButton.textContent === correctAnswer));
+      
+      antwortConatiner.appendChild(antwortButton);
+      });
+
+    } else {
+      showScore();
+    }
   }
-}
+  
+
+  function handleAnswer(i, isCorrect) {
+
+  }
+
+  function showScore() {
+    
+  }
