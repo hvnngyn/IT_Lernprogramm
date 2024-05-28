@@ -13,7 +13,7 @@ const questionPerRound = 10;
 const answerDelay = 1000;
 
 document.addEventListener('DOMContentLoaded', () => {
-
+  console.log("Everything is loaded");
   loadQuestion();
 });
 
@@ -21,31 +21,39 @@ function loadQuestion() {
 
   fetch('fragen.json')
 
-    .then(response=>response.json()) //Antwort wird als json deklariert
+    .then(response => {
+
+      if (!response.ok){
+        throw new Error('Network Error');
+      } 
+        return response.json; //Antwort wird als json deklariert
+      }) 
 
     .then(data => { 
 
-      question = data['teil-allgemein'].slice(0); // kopiert den Datensatz von teil-allgemein in questions
+      question = data['teil-allgemein']; // kopiert den Datensatz von teil-allgemein in questions
 
       shuffle(question);
 
       question = question.slice(0,questionPerRound); // nimmt die ersten 10 Fragen
 
+      console.log("loading Questions");
       displayQuestion();
 
     })
 
     .catch(error => {
-    console.error('Beim Laden ist ein Problem aufgetreten.',error);
+      console.error('Beim Laden ist ein Problem aufgetreten.',error);
     }); //wenn error dann abgefangen
 
 }
 
 function shuffle(array) {
 
-  for(let i = array.length - 1; i > 0; i--) {  // Geht das Array von hinten durch
-    const j = Math.floor(Math.random() * (i + 1)); // wählt zufälligen Index
-    [array[i], array[j]] = [array[j], array[i]]; // tauscht den Werte von i mit j
+  for (let i = array.length - 1; i > 0; i--) {
+      
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
   }
 }
 
@@ -54,19 +62,23 @@ function displayQuestion() {
   const frageElement = document.getElementById['frageAllgWissen']; 
 
   const antwortConatiner = document.getElementbyId['antwortcontainer'];
+  
+  frageElement.innerHTML = 'frage';
 
-  if(currentQuestionID < questionPerRound) {s
+  if(currentQuestionID < questionPerRound) {
 
-    const currentQuestion = question[currentQuestionID]['a']; 
-    const correctAnswer = currentQuestion['l'][0];
+    frageElement.innerHTML="frage";
 
-    frageElement.innerHTML = currentQuestion;
+    const currentQuestion = question.currentQuestionID.a; 
+    const correctAnswer = currentQuestion.l[0];
 
-    const shuffledAnswers = shuffle(currentQuestion['l'].slice(0));
+    frageElement.innerHTML = currentQuestion.a;
 
-    const correctId = shuffledanswers.indexOf(correctAnswer);
+    const shuffledAnswers = shuffle(currentQuestion.l.slice(0));
 
-    shuffledAnswers[correctId] = currentQuestion['a'];
+    const correctId = shuffledanswers.indexOf(currentQuestion.a);
+
+    shuffledAnswers[correctId] = currentQuestion.a;
 
     antwortConatiner.innerHTML = '';
 
@@ -74,20 +86,22 @@ function displayQuestion() {
 
       const antwortButton = document.createElement('button');
 
-      antwortButton.textContent = answer;
+      antwortButton.innerHTML = answer;
 
-      antwortButton.addEventListener('click', () => handleAnswer(i, antwortButton.textContent === correctAnswer));
+      antwortButton.addEventListener('click', () => handleAnswer(i, antwortButton.innerHTML === correctAnswer));
       
       antwortConatiner.appendChild(antwortButton);
       });
 
-    } else {
-      showScore();
-    }
+    // } else {
+    //   showScore();
+   }
   }
   
 
   function handleAnswer(i, isCorrect) {
+
+
 
   }
 
