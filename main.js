@@ -93,18 +93,42 @@ function displayQuestion() {
       antwortConatiner.appendChild(antwortButton);
       });
 
-    // } else {
-    //   showScore();
+    } else {
+      showScore();
    }
   }
-  
-
-  function handleAnswer(i, isCorrect) {
 
 
+function showScore() {
 
   }
 
-  function showScore() {
+
+
+  async function handleAnswer(selectedAnswer, isCorrect) {
+
+    const currentQuestion = question[currentQuestionID];
+
+    markAnswer(selectedAnswer, isCorrect);
+    await sleep(answerDelay);
+
+    if(isCorrect) {
+      console.log('Richtig');
+      correctAnswer++;
+    } else {
+      console.log('Falsch');
+    }
+
+    currentQuestionID++;
+    displayQuestion();
 
   }
+
+function markAnswer(selectedIndex, isCorrect) {
+  const answerButtons = document.querySelectorAll('button');
+  answerButtons[selectedIndex].style.backgroundColor = isCorrect ? 'green' : 'red';
+}
+
+function sleep(ms){
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
