@@ -12,6 +12,10 @@ const questionPerRound = 10;
 
 const answerDelay = 1000;
 
+document.addEventListener('DOMContentLoaded', () => {
+
+  loadQuestion();
+});
 
 function loadQuestion() {
 
@@ -51,12 +55,12 @@ function displayQuestion() {
 
   const antwortConatiner = document.getElementbyId['antwortcontainer'];
 
-  if(currentQuestionID < questionPerRound) {
+  if(currentQuestionID < questionPerRound) {s
 
     const currentQuestion = question[currentQuestionID]['a']; 
     const correctAnswer = currentQuestion['l'][0];
 
-    frageElement.textcontent = currentQuestion;
+    frageElement.innerHTML = currentQuestion;
 
     const shuffledAnswers = shuffle(currentQuestion['l'].slice(0));
 
@@ -88,5 +92,5 @@ function displayQuestion() {
   }
 
   function showScore() {
-    
+
   }
