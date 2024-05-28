@@ -5,7 +5,7 @@
     ],
   "teil-internettechnologien": [
     {"a":"Welche Authentifizierung bietet HTTP", "l":["Digest Access Authentication","OTP","OAuth","2-Faktor-Authentifizierung"]},
-    {"a":"Welches Transportprotokoll eignet sich für zeitkritische Übertragungen", "l":["UDP","TCP","HTTP","Fast Retransmit"]},
+    {"a":"Welches Transportprotokoll eignet sich für zeitkritische Übertragungen", "l":["UDP","TCP","HTTP","Fast Retransmit"]}
    
     ],
   "teil-allgemein": [
@@ -14,7 +14,7 @@
     {"a":"Was ist die Hauptstadt Frankreichs?", "l": ["Paris","Montreal", "Rennes", "Nizza"]},
     {"a":"Wie viele Planeten gibt es in unserem Sonnensystem?", "l": ["Acht", "Neun", "Sechs", "Sieben"]},
     {"a":"Wer schrieb Romeo und Julia?", "l": ["William Shakespeare", "Charles Dickens","Agatha Christie", "J.K. Rowling"]},
-    {"a":"Welcher ist der längste Fluss der Welt?", "l": ["Nil", "Amazonas", "Lena","ELbe"]},
+    {"a":"Welcher ist der längste Fluss der Welt?", "l": ["Nil", "Amazonas", "Lena","Elbe"]},
     {"a":"Wer malte die Mona Lisa", "l": ["Leonardo da Vinci", "Pablo Picasso", "Vincent Van Gogh", "Claude Monet"]},
     {"a":"Welches ist das höchste Gebirge der Welt?", "l": ["Mount Everest","Kilimandscharo","Fuji", "Zugspitze"]},
     {"a":"Wie viele Kontinente gibt es auf der Welt?", "l": ["Sieben","Acht","Sechs","Neun"]},
@@ -33,7 +33,7 @@
     
     "teil-noten": [
         {"a":"C4", "l":["C","D","E","H"]},
-        {"a":"(C4 E4 G4)", "l": ["C", "H", "F", "D"]},
+        {"a":"(C4 E4 G4)", "l": ["C", "H", "F", "D"]}
        
     ]
 }

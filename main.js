@@ -3,132 +3,111 @@
 // statistik auswerten,richtig falsch
 
 let currentQuestionID = 0;
-
 let question = [];
-
 let correctAnswer = 0;
-
 const questionPerRound = 10;
-
 const answerDelay = 1000;
 
-document.addEventListener('DOMContentLoaded', () => {
-  console.log("Everything is loaded");
-  loadQuestion();
-});
+
 
 function loadQuestion() {
-
-  fetch('fragen.json')
-
-    .then(response => {
-
-      if (!response.ok){
-        throw new Error('Network Error');
-      } 
-        return response.json; //Antwort wird als json deklariert
-      }) 
-
-    .then(data => { 
-
-      question = data['teil-allgemein']; // kopiert den Datensatz von teil-allgemein in questions
-
-      shuffle(question);
-
-      question = question.slice(0,questionPerRound); // nimmt die ersten 10 Fragen
-
-      console.log("loading Questions");
+  fetch("fragen.json")
+    .then(response => response.json())
+      // if (!response.ok) {
+      //     throw new Error('Network Error');
+      // }
+      // return 
+      //return response.json(); // Antwort wird als JSON geparst
+    .then(data => {
+      question = data['teil-allgemein'].slice(0); // Kopiert den Datensatz von teil-allgemein in questions
+      shufflequestions(question);
+      question = question.slice(0, questionPerRound); // Nimmt die ersten 10 Fragen
+     // console.log("loading Questions");
       displayQuestion();
-
     })
-
     .catch(error => {
-      console.error('Beim Laden ist ein Problem aufgetreten.',error);
-    }); //wenn error dann abgefangen
-
+      console.error('Beim Laden ist ein Problem aufgetreten.', error);
+    });
 }
 
-function shuffle(array) {
-
+function shufflequestions(array) {
   for (let i = array.length - 1; i > 0; i--) {
-      
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
   }
 }
 
 function displayQuestion() {
+  const frageElement = document.getElementById('frageAllgWissen');
+  const antwortContainer = document.getElementById('antwortContainer'); // Typo korrigiert
 
-  const frageElement = document.getElementById['frageAllgWissen']; 
-
-  const antwortConatiner = document.getElementbyId['antwortcontainer'];
-  
-  frageElement.innerHTML = 'frage';
-
-  if(currentQuestionID < questionPerRound) {
-
-    frageElement.innerHTML="frage";
-
-    const currentQuestion = question.currentQuestionID.a; 
-    const correctAnswer = currentQuestion.l[0];
+  if (currentQuestionID < questionPerRound) {
+    const currentQuestion = question[currentQuestionID]; // Zugriff auf das aktuelle Array-Element
+    const correctAnswer = currentQuestion.l[0]; // Richtige Antwort
 
     frageElement.innerHTML = currentQuestion.a;
 
-    const shuffledAnswers = shuffle(currentQuestion.l.slice(0));
+    const shuffledAnswers = shuffleArray(currentQuestion.l.slice(0)); // Antworten mischen
 
-    const correctId = shuffledanswers.indexOf(currentQuestion.a);
-
+    const correctId = shuffledAnswers.indexOf(currentQuestion.a);
     shuffledAnswers[correctId] = currentQuestion.a;
 
-    antwortConatiner.innerHTML = '';
-
+    antwortContainer.innerHTML = '';
     shuffledAnswers.forEach((answer, i) => {
-
       const antwortButton = document.createElement('button');
-
       antwortButton.innerHTML = answer;
-
       antwortButton.addEventListener('click', () => handleAnswer(i, antwortButton.innerHTML === correctAnswer));
-      
-      antwortConatiner.appendChild(antwortButton);
-      });
-
-    } else {
-      showScore();
-   }
+      antwortContainer.appendChild(antwortButton);
+    });
+  } else {
+    showScore();
   }
-
+}
 
 function showScore() {
+  // Score-Anzeige
+  const frageElement = document.getElementById('frageAllgWissen');
+  const antwortContainer = document.getElementById('antwortcontainer');
 
+  frageElement.innerHTML = `Dein Score: ${correctAnswer} von ${questionPerRound}`;
+  antwortContainer.innerHTML = ''; // Antworten löschen
+}
+
+async function handleAnswer(selectedAnswer, isCorrect) {
+  const currentQuestion = question[currentQuestionID];
+
+  markAnswer(selectedAnswer, isCorrect);
+  await sleep(answerDelay);
+
+  if (isCorrect) {
+    console.log('Richtig');
+    correctAnswer++;
+  } else {
+    console.log('Falsch');
   }
 
-
-
-  async function handleAnswer(selectedAnswer, isCorrect) {
-
-    const currentQuestion = question[currentQuestionID];
-
-    markAnswer(selectedAnswer, isCorrect);
-    await sleep(answerDelay);
-
-    if(isCorrect) {
-      console.log('Richtig');
-      correctAnswer++;
-    } else {
-      console.log('Falsch');
-    }
-
-    currentQuestionID++;
-    displayQuestion();
-
-  }
+  currentQuestionID++;
+  displayQuestion();
+}
 
 function markAnswer(selectedIndex, isCorrect) {
   const answerButtons = document.querySelectorAll('button');
   answerButtons[selectedIndex].style.backgroundColor = isCorrect ? 'green' : 'red';
 }
 
-function sleep(ms){
+function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  console.log("Everything is loaded");
+  loadQuestion();
+});
