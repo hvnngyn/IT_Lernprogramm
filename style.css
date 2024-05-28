@@ -29,7 +29,7 @@ AFD5AA grün türkis
 
 .main{
     display: flex;
-    min-height: 70vh;
+    min-height: 50vh;
     flex-direction: column;
     padding: 20px;
     background-color:#E8F0FA;
@@ -42,6 +42,7 @@ AFD5AA grün türkis
     flex-direction: column;
     padding: 20px;
     margin: 0;
+    min-height: 15vh;
 
 }
 
@@ -64,6 +65,16 @@ AFD5AA grün türkis
     overflow: auto; 
 }
 
+.nav3{
+    display:flex;
+    background-color:#A7C1E1;
+    margin: 0 auto;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+    padding: 1rem;
+    min-height: 5vh;
+}
+
 .footer{
     padding: 1rem;
     background-color:#84A1C4;
@@ -79,19 +90,20 @@ AFD5AA grün türkis
     margin:auto;
     padding: 5px;
     overflow: auto;
-    
-    min-block-size: 20vh ;
+    min-height: 20vh ;
+    min-width: 22vh;
 
 }
 .section2{
     display: block;
     flex-direction: column;
     background-color:white;
+    margin: 0 auto;
     margin:auto;
     padding: 5px;
     overflow: auto;
     min-height: 20vh;
-    
+    min-width: 75vh;
 
 }
 
@@ -139,6 +151,7 @@ AFD5AA grün türkis
     border: none;
 }
 
+
 @media all and (max-width:40em){
     
     nav{
@@ -147,10 +160,15 @@ AFD5AA grün türkis
 }
 
 .fragecontainer{
-    display:block;
 
+    display:block;
+    background-color: white;
+    width: 100;
+    min-height:35vh;
+    margin:0.5em;
+    padding:0.5em;
 }
 
 .antwortcontainer{
-
+    display: flex;
 }

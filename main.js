@@ -1,0 +1,62 @@
+// Frage laden, Antowrten laden, Starten funktion,
+// Neustart, Warten funktion, progress bar,
+// statistik auswerten,richtig falsch
+
+let currentQuestionID = 0;
+
+let question = [];
+
+let correctAnswer = 0;
+
+const questionPerRound = 10;
+
+const answerDelay = 1000;
+
+
+function loadQuestion() {
+
+  fetch('fragen.json')
+
+    .then(response=>response.json()) //Antwort wird als json deklariert
+
+    .then(data => { 
+
+      question = data['teil-allgemein'].slice(0); // kopiert den Datensatz von teil-allgemein in questions
+
+      shuffleQuestions(question);
+
+      question = question.slice(0,questionPerRound); // nimmt die ersten 10 Fragen
+
+      displayQuestion();
+
+    })
+
+    .catch(error => {
+    console.error('Beim Laden ist ein Problem aufgetreten.',error);
+    }); //wenn error dann abgefangen
+
+}
+
+function shuffle(array) {
+
+  for(let i = array.length - 1; i > 0; i--) {  // Geht das Array von hinten durch
+    const j = Math.floor(Math.random() * (i + 1)); // wählt zufälligen Index
+    [array[i], array[j]] = [array[j], array[i]]; // tauscht den Werte von i mit j
+  }
+}
+
+function displayQuestion() {
+
+  const frageElement = document.getElementById['frageAllgWissen']; 
+
+  const antwortConatiner = document.getElementbyId['antwortcontainer'];
+
+  if(currentQuestionID < questionPerRound) {
+
+    const currentQuestion = question[currentQuestionID]['a']; 
+    const correctAnswer = currentQuestion['l'][0];
+
+    frageElement.textcontent = currentQuestion;
+
+  }
+}

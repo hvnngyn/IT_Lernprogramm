@@ -1,0 +1,39 @@
+{ 
+  "teil-mathe": [
+    {"a":"x^2+x^2", "l":["2x^2","x^4","x^8","2x^4"]},
+    {"a":"x^2*x^2", "l":["x^4","x^2","2x^2","4x"]}
+    ],
+  "teil-internettechnologien": [
+    {"a":"Welche Authentifizierung bietet HTTP", "l":["Digest Access Authentication","OTP","OAuth","2-Faktor-Authentifizierung"]},
+    {"a":"Welches Transportprotokoll eignet sich für zeitkritische Übertragungen", "l":["UDP","TCP","HTTP","Fast Retransmit"]},
+   
+    ],
+  "teil-allgemein": [
+    {"a":"Karl der Große, Geburtsjahr", "l":["747","828","650","1150"]},
+    {"a":"Was ist die Hauptstadt Deutschlands?", "l": ["Berlin", "Frankfurt", "Dresden", "München"]},
+    {"a":"Was ist die Hauptstadt Frankreichs?", "l": ["Paris","Montreal", "Rennes", "Nizza"]},
+    {"a":"Wie viele Planeten gibt es in unserem Sonnensystem?", "l": ["Acht", "Neun", "Sechs", "Sieben"]},
+    {"a":"Wer schrieb Romeo und Julia?", "l": ["William Shakespeare", "Charles Dickens","Agatha Christie", "J.K. Rowling"]},
+    {"a":"Welcher ist der längste Fluss der Welt?", "l": ["Nil", "Amazonas", "Lena","ELbe"]},
+    {"a":"Wer malte die Mona Lisa", "l": ["Leonardo da Vinci", "Pablo Picasso", "Vincent Van Gogh", "Claude Monet"]},
+    {"a":"Welches ist das höchste Gebirge der Welt?", "l": ["Mount Everest","Kilimandscharo","Fuji", "Zugspitze"]},
+    {"a":"Wie viele Kontinente gibt es auf der Welt?", "l": ["Sieben","Acht","Sechs","Neun"]},
+    {"a":"Was ist die Hauptstadt von Australien?", "l": ["Canberra","Melbourne","Sydney","Brisbane"]},
+    {"a":"Welcher Planet ist am nächsten zur Sonne?", "l": ["Merkur","Venus","Erde","Mars"]},
+    {"a":"Wie viele Sekunden hat ein Tag?", "l": ["86.400 Sekunden","76.400 Sekunden","83.200 Sekunden", "74.600 Sekunden"]},
+    {"a":"Wer malte die Sternennacht", "l": ["Vincent Van Gogh", "Leonardo da Vinci","Pablo Picasso","Claude Monet"]},
+    {"a":"Für welches Modul ist dieses Projekt?", "l": ["Internet Technologie","Rechnernetze","Software Engineering", "Business Intelligence"]},
+    {"a":"Welches chemisches Element ist als 'Ag' bekannt?", "l": ["Silber", "Gold","Aluminium", "Argan"]},
+    {"a":"Wie nennt man ein männliches Schwein?", "l": ["Eber", "Schwein", "Ferkel", "Sau"]},
+    {"a":"Wie viele Bundesländer hat Deutschland?", "l": ["16","17","15","14"]},
+    {"a":"Wie heißt die Schicht der Atmosphäre, die der Erde am nächsten ist?", "l": ["Troposphäre","Stratosphäre","Mesosphäre","Thermosphäre"]},
+    {"a":"Wie hoch ist der Eiffelturm?", "l": ["300m","250m","220m","176m"]},
+    {"a":"Wie viele Weihnachtsbäume werden in Deutschland pro Jahr verkauft?", "l": ["30 Millionen","28 Millionen", "21 Millionen","24 Millionen"]}
+    ],
+    
+    "teil-noten": [
+        {"a":"C4", "l":["C","D","E","H"]},
+        {"a":"(C4 E4 G4)", "l": ["C", "H", "F", "D"]},
+       
+    ]
+}
