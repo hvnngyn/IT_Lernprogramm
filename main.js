@@ -8,7 +8,7 @@ let correctAnswer = 0;
 const questionPerRound = 10;
 const answerDelay = 1000;
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
   console.log("Everything is loaded");
   const mainElement = document.querySelector('main');
   const datapart = mainElement.getAttribute('data-part');

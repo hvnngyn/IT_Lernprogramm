@@ -5,7 +5,8 @@
     <link rel="stylesheet" href="style.css">
     <meta name="author" content="Hai Van Nguyen">
     <link rel="icon" href="/cat-playing.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=no;">
+    <link rel="manifest" href="manifest.json">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
     <title>Internet Technologie</title>
 </head>
 
@@ -40,6 +41,18 @@
     </footer>
 
     <script src="main.js" defer></script>
+
+    <script>
+        // Service Worker registrieren für PWA
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('/serviceworker.js')
+                    .then(reg => console.log(reg))
+                    .catch(err => console.log(err));
+            }
+    </script>
+    
 </body>
+
+
 
 </html>

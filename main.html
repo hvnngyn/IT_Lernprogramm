@@ -7,7 +7,7 @@
     <meta name="author" content="Hai Van Nguyen">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" href="/cat-playing.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=no;">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="ROBOTS" content="INDEX, FOLLOW"/>
 
@@ -72,5 +72,14 @@
 <footer class="footer">
         <p>Website von Hai Van Nguyen</p>
 </footer>
+
+<script>
+    // Service Worker registrieren für PWA
+		if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/serviceworker.js')
+				.then(reg => console.log(reg))
+				.catch(err => console.log(err));
+		}
+</script>
 
 </html>
