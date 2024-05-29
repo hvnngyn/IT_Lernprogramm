@@ -10,9 +10,23 @@ const answerDelay = 1000;
 
 document.addEventListener('DOMContentLoaded', () => {
   console.log("Everything is loaded");
+
   const mainElement = document.querySelector('main');
   const datapart = mainElement.getAttribute('data-part');
   loadQuestion(datapart);
+  renderMathInElement(document.body, {
+    // customised options
+    // • auto-render specific keys, e.g.:
+    delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false},
+        {left: '\\(', right: '\\)', display: false},
+        {left: '\\[', right: '\\]', display: true}
+    ],
+    // • rendering keys, e.g.:
+    throwOnError : false
+  });
+  
 });
 
 function loadQuestion(datapart) {
@@ -67,9 +81,33 @@ function displayQuestion() {
       antwortButton.addEventListener('click', () => handleAnswer(i, antwortButton.innerHTML === correctAnswer));
       antwortContainer.appendChild(antwortButton);
     });
+    renderMathInElement(frageElement, {
+      // customised options
+      // • auto-render specific keys, e.g.:
+      delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+      ],
+      // • rendering keys, e.g.:
+      throwOnError : false
+    });
+    renderMathInElement(antwortContainer, {
+      // customised options
+      // • auto-render specific keys, e.g.:
+      delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+      ],
+      // • rendering keys, e.g.:
+      throwOnError : false
+    });
   } else {
     showScore();
-    antwortContainer.innerHTML = '';
+    
   }
 }
 
@@ -80,6 +118,7 @@ function showScore() {
 
   frageElement.innerHTML = `Dein Score: ${correctAnswer} von ${questionPerRound}`;
   antwortContainer.innerHTML = ''; // Antworten löschen
+
 }
 
 async function handleAnswer(selectedAnswer, isCorrect) {
