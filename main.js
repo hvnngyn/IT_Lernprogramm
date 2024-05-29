@@ -8,18 +8,24 @@ let correctAnswer = 0;
 const questionPerRound = 10;
 const answerDelay = 1000;
 
+document.addEventListener('DOMContentLoaded', function() {
+  console.log("Everything is loaded");
+  const mainElement = document.querySelector('main');
+  const datapart = mainElement.getAttribute('data-part');
+  loadQuestion(datapart);
+});
 
-
-function loadQuestion() {
+function loadQuestion(datapart) {
   fetch("fragen.json")
-    .then(response => response.json())
-      // if (!response.ok) {
-      //     throw new Error('Network Error');
-      // }
-      // return 
-      //return response.json(); // Antwort wird als JSON geparst
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network Error');
+    }
+    return response.json();
+  })
+
     .then(data => {
-      question = data['teil-allgemein'].slice(0); // Kopiert den Datensatz von teil-allgemein in questions
+      question = data[datapart].slice(0); // Kopiert den Datensatz von teil-allgemein in questions
       shufflequestions(question);
       question = question.slice(0, questionPerRound); // Nimmt die ersten 10 Fragen
      // console.log("loading Questions");
@@ -29,6 +35,7 @@ function loadQuestion() {
       console.error('Beim Laden ist ein Problem aufgetreten.', error);
     });
 }
+
 
 function shufflequestions(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -55,12 +62,14 @@ function displayQuestion() {
     antwortContainer.innerHTML = '';
     shuffledAnswers.forEach((answer, i) => {
       const antwortButton = document.createElement('button');
+      antwortButton.classList.add('button');
       antwortButton.innerHTML = answer;
       antwortButton.addEventListener('click', () => handleAnswer(i, antwortButton.innerHTML === correctAnswer));
       antwortContainer.appendChild(antwortButton);
     });
   } else {
     showScore();
+    antwortContainer.innerHTML = '';
   }
 }
 
@@ -107,7 +116,3 @@ function shuffleArray(array) {
   return array;
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  console.log("Everything is loaded");
-  loadQuestion();
-});

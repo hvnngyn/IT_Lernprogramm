@@ -3,9 +3,28 @@
     {"a":"x^2+x^2", "l":["2x^2","x^4","x^8","2x^4"]},
     {"a":"x^2*x^2", "l":["x^4","x^2","2x^2","4x"]}
     ],
+    
   "teil-internettechnologien": [
     {"a":"Welche Authentifizierung bietet HTTP", "l":["Digest Access Authentication","OTP","OAuth","2-Faktor-Authentifizierung"]},
-    {"a":"Welches Transportprotokoll eignet sich für zeitkritische Übertragungen", "l":["UDP","TCP","HTTP","Fast Retransmit"]}
+    {"a":"Welches Transportprotokoll eignet sich für zeitkritische Übertragungen", "l":["UDP","TCP","HTTP","Fast Retransmit"]},
+    {"a": "Was bedeutet HTTP?","l": ["HyperText Transfer Protocol", "HighText Transfer Protocol", "HyperText Translation Protocol", "HyperTransfer Text Protocol"]},
+    {"a": "Welche Programmiersprache wird hauptsächlich für die Webentwicklung verwendet?","l": ["JavaScript", "Python", "C++", "Java"]},
+    {"a": "Was ist ein CSS-Framework?","l": ["Eine Sammlung von CSS-Dateien, die häufig verwendete Stile und Layouts bereitstellen", "Ein JavaScript-Bibliothek", "Ein HTML-Editor", "Ein Webserver"]},
+    {"a": "Was ist ein DNS-Server?","l": ["Ein Server, der Domain-Namen in IP-Adressen übersetzt", "Ein Server, der Webseiten hostet", "Ein Server, der E-Mails speichert", "Ein Server, der Datenbankabfragen verarbeitet"]},
+    {"a": "Was bedeutet IP in IP-Adresse?","l": ["Internet Protocol", "Internal Protocol", "Internet Provider", "International Protocol"]},
+    {"a": "Welche der folgenden ist eine NoSQL-Datenbank?","l": ["MongoDB", "MySQL", "PostgreSQL", "Oracle"]},
+    {"a": "Was ist ein CDN?","l": ["Content Delivery Network", "Computer Data Network", "Content Distribution Node", "Central Data Network"]},
+    {"a": "Welcher Port wird normalerweise für HTTPS verwendet?","l": ["443", "80", "22", "21"]},
+    {"a": "Was ist die Hauptfunktion eines Routers?","l": ["Netzwerkpakete zwischen verschiedenen Netzwerken weiterleiten", "Webseiten hosten", "E-Mails senden und empfangen", "Daten verschlüsseln"]},
+    {"a": "Was ist ein Firewall?","l": ["Eine Sicherheitsvorrichtung, die den Netzwerkverkehr überwacht und filtert", "Ein Tool zur Erstellung von Webseiten", "Ein Dienst zum Speichern von Dateien", "Ein Datenbankmanagementsystem"]},
+    {"a": "Was bedeutet SSL?","l": ["Secure Sockets Layer", "Safe Socket Layer", "Secure Site Layer", "Safe Secure Layer"]},
+    {"a": "Welches Protokoll wird häufig für sichere E-Mail-Kommunikation verwendet?","l": ["SMTP", "POP3", "IMAP", "HTTPS"]},
+    {"a": "Was ist ein Proxy-Server?","l": ["Ein Server, der Anfragen von Clients entgegennimmt und an andere Server weiterleitet", "Ein Server, der Webseiten hostet", "Ein Server, der Datenbanken verwaltet", "Ein Server, der E-Mails speichert"]},
+    {"a": "Was bedeutet VPN?","l": ["Virtual Private Network", "Virtual Public Network", "Virtual Personal Network", "Virtual Protected Network"]},
+    {"a": "Was ist die Aufgabe eines Load Balancers?","l": ["Den Datenverkehr auf mehrere Server zu verteilen", "Webseiten zu hosten", "Datenbanken zu verwalten", "E-Mails zu senden und zu empfangen"]},
+    {"a": "Welches Protokoll wird verwendet, um Dateien zwischen Computern zu übertragen?","l": ["FTP", "HTTP", "SMTP", "DNS"]},
+    {"a": "Was ist eine IP-Adresse?","l": ["Eine eindeutige Adresse, die ein Gerät in einem Netzwerk identifiziert", "Ein Kennwort für den Netzwerkzugriff", "Ein Sicherheitsprotokoll", "Ein Webhosting-Service"]},
+    {"a": "Welche Technologie ermöglicht es, Webseiten dynamisch zu aktualisieren, ohne die Seite neu zu laden?","l": ["AJAX", "FTP", "SMTP", "HTTP"]}
    
     ],
   "teil-allgemein": [
