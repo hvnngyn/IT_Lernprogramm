@@ -3,55 +3,61 @@
 // statistik auswerten,richtig falsch
 
 let currentQuestionID = 0;
-let question = [];
-let correctAnswer = 0;
-const questionPerRound = 10;
+let questions = [];
+let correctAnswerCount = 0;
+const questionsPerRound = 10;
 const answerDelay = 1000;
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log("Everything is loaded");
+  console.log("Alles ist geladen");
 
   const mainElement = document.querySelector('main');
   const datapart = mainElement.getAttribute('data-part');
-  loadQuestion(datapart);
-  renderMathInElement(document.body, {
-    // customised options
-    // • auto-render specific keys, e.g.:
-    delimiters: [
-        {left: '$$', right: '$$', display: true},
-        {left: '$', right: '$', display: false},
-        {left: '\\(', right: '\\)', display: false},
-        {left: '\\[', right: '\\]', display: true}
-    ],
-    // • rendering keys, e.g.:
-    throwOnError : false
+  loadQuestions(datapart);
+
+  document.getElementById('restartButton').addEventListener('click', () => {
+    restart(datapart);
   });
+  
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: '$$', right: '$$', display: true},
+      {left: '$', right: '$', display: false},
+      {left: '\\(', right: '\\)', display: false},
+      {left: '\\[', right: '\\]', display: true}
+    ],
+    throwOnError: false
+  });
+  
+  
   
 });
 
-function loadQuestion(datapart) {
+function restart(datapart){
+  currentQuestionID = 0;
+  correctAnswerCount = 0;
+  loadQuestions(datapart);
+}
+function loadQuestions(datapart) {
   fetch("fragen.json")
   .then(response => {
     if (!response.ok) {
-      throw new Error('Network Error');
+      throw new Error('Netzwerkfehler');
     }
     return response.json();
   })
-
-    .then(data => {
-      question = data[datapart].slice(0); // Kopiert den Datensatz von teil-allgemein in questions
-      shufflequestions(question);
-      question = question.slice(0, questionPerRound); // Nimmt die ersten 10 Fragen
-     // console.log("loading Questions");
-      displayQuestion();
-    })
-    .catch(error => {
-      console.error('Beim Laden ist ein Problem aufgetreten.', error);
-    });
+  .then(data => {
+    questions = data[datapart].slice(0);
+    shuffleQuestions(questions);
+    questions = questions.slice(0, questionsPerRound);
+    displayQuestion();
+  })
+  .catch(error => {
+    console.error('Beim Laden ist ein Problem aufgetreten.', error);
+  });
 }
 
-
-function shufflequestions(array) {
+function shuffleQuestions(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
@@ -60,76 +66,80 @@ function shufflequestions(array) {
 
 function displayQuestion() {
   const frageElement = document.getElementById('frageAllgWissen');
-  const antwortContainer = document.getElementById('antwortContainer'); // Typo korrigiert
+  const antwortContainer = document.getElementById('antwortContainer');
 
-  if (currentQuestionID < questionPerRound) {
-    const currentQuestion = question[currentQuestionID]; // Zugriff auf das aktuelle Array-Element
-    const correctAnswer = currentQuestion.l[0]; // Richtige Antwort
+  if (currentQuestionID < questionsPerRound) {
+    const currentQuestion = questions[currentQuestionID];
+    const correctAnswer = currentQuestion.l[0];
 
     frageElement.innerHTML = currentQuestion.a;
 
-    const shuffledAnswers = shuffleArray(currentQuestion.l.slice(0)); // Antworten mischen
-
-    const correctId = shuffledAnswers.indexOf(currentQuestion.a);
-    shuffledAnswers[correctId] = currentQuestion.a;
+    const shuffledAnswers = shuffleArray(currentQuestion.l.slice(0));
 
     antwortContainer.innerHTML = '';
     shuffledAnswers.forEach((answer, i) => {
       const antwortButton = document.createElement('button');
       antwortButton.classList.add('button');
       antwortButton.innerHTML = answer;
-      antwortButton.addEventListener('click', () => handleAnswer(i, antwortButton.innerHTML === correctAnswer));
+      antwortButton.addEventListener('click', () => handleAnswer(i, answer === correctAnswer));
       antwortContainer.appendChild(antwortButton);
     });
+
+    styleButtons();
+    updateProgress();
     renderMathInElement(frageElement, {
-      // customised options
-      // • auto-render specific keys, e.g.:
       delimiters: [
-          {left: '$$', right: '$$', display: true},
-          {left: '$', right: '$', display: false},
-          {left: '\\(', right: '\\)', display: false},
-          {left: '\\[', right: '\\]', display: true}
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false},
+        {left: '\\(', right: '\\)', display: false},
+        {left: '\\[', right: '\\]', display: true}
       ],
-      // • rendering keys, e.g.:
-      throwOnError : false
+      throwOnError: false
     });
     renderMathInElement(antwortContainer, {
-      // customised options
-      // • auto-render specific keys, e.g.:
       delimiters: [
-          {left: '$$', right: '$$', display: true},
-          {left: '$', right: '$', display: false},
-          {left: '\\(', right: '\\)', display: false},
-          {left: '\\[', right: '\\]', display: true}
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false},
+        {left: '\\(', right: '\\)', display: false},
+        {left: '\\[', right: '\\]', display: true}
       ],
-      // • rendering keys, e.g.:
-      throwOnError : false
+      throwOnError: false
+
     });
+
+    
   } else {
     showScore();
-    
+    updateProgress();
   }
 }
 
+function styleButtons() {
+  const buttons = document.querySelectorAll('.button');
+  buttons.forEach(button => {
+    button.style.backgroundColor = '#A7C1E1';
+    button.style.color = 'white';
+    button.style.padding = '10px 20px'; 
+    button.style.fontSize = '18px';
+    button.style.margin = '5px';
+  });
+}
+
 function showScore() {
-  // Score-Anzeige
   const frageElement = document.getElementById('frageAllgWissen');
-  const antwortContainer = document.getElementById('antwortcontainer');
+  const antwortContainer = document.getElementById('antwortContainer');
 
-  frageElement.innerHTML = `Dein Score: ${correctAnswer} von ${questionPerRound}`;
-  antwortContainer.innerHTML = ''; // Antworten löschen
-
+  frageElement.innerHTML = `Dein Score: ${correctAnswerCount} von ${questionsPerRound}`;
+  antwortContainer.innerHTML = '';
 }
 
 async function handleAnswer(selectedAnswer, isCorrect) {
-  const currentQuestion = question[currentQuestionID];
-
   markAnswer(selectedAnswer, isCorrect);
   await sleep(answerDelay);
 
   if (isCorrect) {
     console.log('Richtig');
-    correctAnswer++;
+    correctAnswerCount++;
   } else {
     console.log('Falsch');
   }
@@ -140,7 +150,7 @@ async function handleAnswer(selectedAnswer, isCorrect) {
 
 function markAnswer(selectedIndex, isCorrect) {
   const answerButtons = document.querySelectorAll('button');
-  answerButtons[selectedIndex].style.backgroundColor = isCorrect ? 'green' : 'red';
+  answerButtons[selectedIndex].style.backgroundColor = isCorrect ? '#008770' : '#EFA9AE';
 }
 
 function sleep(ms) {
@@ -155,3 +165,14 @@ function shuffleArray(array) {
   return array;
 }
 
+
+
+function updateProgress() {
+  
+  const progressPercentage = (currentQuestionID / questionsPerRound) * 100; // Fortschritt in Prozent berechnen
+  // Fortschrittsleisten-Element abrufen
+  const progressbar = document.getElementById('progressbar');
+
+  // Fortschrittsleiste aktualisieren
+  progressbar.style.width = `${progressPercentage}%`;
+}

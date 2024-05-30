@@ -22,15 +22,13 @@ AFD5AA grün türkis
 0C7C59 dunkelgrün
 */
 
-
-
 *{
     box-sizing: border-box;
 }
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: larger;
+    font-size: 25px;
 }
 
 .header{
@@ -121,11 +119,27 @@ body {
 
 .antwortcontainer{
     display: flex;
+    flex-wrap: wrap;
     background-color: white;
     justify-content: center;
 }
 
-.antwortbutton{
+.progressbar-container {
+    width: 100%;
+    height: 20px; /* Höhe der Fortschrittsleiste */
+    background-color: #ddd; /* Hintergrundfarbe der Fortschrittsleiste */
+    border-radius: 5px; /* Abrundung der Ecken */
+    margin-top: 10px; /* Abstand nach oben */
+}
+
+.progressbar {
+    height: 100%;
+    background-color: #4E598C; /* Farbe der Fortschrittsleiste */
+    width: 0%; /* Startbreite */
+    border-radius: 5px; /* Abrundung der Ecken */
+}
+
+.button{
 
     display: inline-block;
     text-decoration: none;
