@@ -19,10 +19,10 @@ const restartButton = document.getElementById("restartButton");
 const answerDelay = 1000;
 // Setzt die Pause nach einer Antwort auf 1000 Millisekunden (1 Sekunde).
 
-const username = "s85875@htw-dresden.de";
+const username = "s86039@htw-dresden.de";
 // Definiert den Benutzernamen für die Authentifizierung.
 
-const password = "Vali!2004";
+const password = "n15zlx+t2m";
 // Definiert das Passwort für die Authentifizierung.
 
 const headers = new Headers();
@@ -92,7 +92,7 @@ function displayNextQuestion() {
     const cardContainer = document.getElementById("frageContainer");
     // Holt das HTML-Element für den Container der Fragen.
 
-    const frageTextElement = document.getElementById('frageText');
+    const frageTextElement = document.getElementById('frageAllgWissen');
     // Holt das HTML-Element für den Fragetext.
 
     const card = document.createElement("div");
