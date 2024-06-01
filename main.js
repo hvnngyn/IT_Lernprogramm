@@ -8,6 +8,7 @@ let correctAnswerCount = 0;
 const questionsPerRound = 10;
 const answerDelay = 1000;
 
+
 document.addEventListener('DOMContentLoaded', () => {
   console.log("Alles ist geladen");
 
@@ -18,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('restartButton').addEventListener('click', () => {
     restart(datapart);
   });
-  
+
   renderMathInElement(document.body, {
     delimiters: [
       {left: '$$', right: '$$', display: true},
@@ -30,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   
   
-  
 });
 
 function restart(datapart){
@@ -38,6 +38,7 @@ function restart(datapart){
   correctAnswerCount = 0;
   loadQuestions(datapart);
 }
+
 function loadQuestions(datapart) {
   fetch("fragen.json")
   .then(response => {
@@ -67,12 +68,13 @@ function shuffleQuestions(array) {
 function displayQuestion() {
   const frageElement = document.getElementById('frageAllgWissen');
   const antwortContainer = document.getElementById('antwortContainer');
-
+  
   if (currentQuestionID < questionsPerRound) {
     const currentQuestion = questions[currentQuestionID];
     const correctAnswer = currentQuestion.l[0];
 
     frageElement.innerHTML = currentQuestion.a;
+    
 
     const shuffledAnswers = shuffleArray(currentQuestion.l.slice(0));
 
@@ -87,6 +89,9 @@ function displayQuestion() {
 
     styleButtons();
     updateProgress();
+
+    
+
     renderMathInElement(frageElement, {
       delimiters: [
         {left: '$$', right: '$$', display: true},
@@ -108,6 +113,7 @@ function displayQuestion() {
     });
 
     
+
   } else {
     showScore();
     updateProgress();
@@ -129,7 +135,7 @@ function showScore() {
   const frageElement = document.getElementById('frageAllgWissen');
   const antwortContainer = document.getElementById('antwortContainer');
 
-  frageElement.innerHTML = `Dein Score: ${correctAnswerCount} von ${questionsPerRound}`;
+  frageElement.innerHTML = ` SUPER! Dein Score: ${correctAnswerCount} von ${questionsPerRound} Fragen richtig beantwortet!`;
   antwortContainer.innerHTML = '';
 }
 
@@ -176,3 +182,4 @@ function updateProgress() {
   // Fortschrittsleiste aktualisieren
   progressbar.style.width = `${progressPercentage}%`;
 }
+
