@@ -59,7 +59,7 @@ function displayQuestion() {
     renderer.resize(500, 200); // Anpassen der Größe
     const context = renderer.getContext();
 
-    const stave = new Vex.Flow.Stave(10, 40, 400);
+    const stave = new Vex.Flow.Stave(10, 40, 475);
     stave.addClef('treble').addTimeSignature('4/4').setContext(context).draw();
 
     const staveNote = new Vex.Flow.StaveNote({
