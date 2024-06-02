@@ -20,6 +20,7 @@ zufällige Aufgabe von einem externen Server und Musiknoten lernen.
 Das Lernprogramm ist über den Link: 
 https://www.informatik.htw-dresden.de/~s86039/IT_Lernprogramm-main/IT_Lernprogramm-main/main.html
 zu erreichen.
+Des weiteren kann man sich das Programm über GitHub runterladen.
 
 ## Erklärung des Codes
 
