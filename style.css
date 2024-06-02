@@ -150,6 +150,18 @@ body {
     border: none;
 }
 
+.button4{
+    background-color: #A7C1E1;
+    color: white;
+    padding:10px 20px; 
+    font-size: 18px;
+    margin :5px;
+    text-decoration: none;
+    border-radius: 0%;
+    cursor: pointer;
+    border: none;
+}
+
 .footer{
     padding: 1rem;
     background-color:#84A1C4;
@@ -169,3 +181,4 @@ body {
         max-width: 100%;
     }
 }
+

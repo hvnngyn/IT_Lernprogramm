@@ -1,45 +1,29 @@
-// Frage laden, Antowrten laden, Starten funktion,
-// Neustart, Warten funktion, progress bar,
-// statistik auswerten,richtig falsch
-
 let currentQuestionID = 0;
 let questions = [];
 let correctAnswerCount = 0;
 const questionsPerRound = 10;
 const answerDelay = 1000;
+const {Renderer, Stave} = Vex.Flow;
 
 
 document.addEventListener('DOMContentLoaded', () => {
   console.log("Alles ist geladen");
 
-  const mainElement = document.querySelector('main');
-  const datapart = mainElement.getAttribute('data-part');
-  loadQuestions(datapart);
+  loadQuestions();
 
   document.getElementById('restartButton').addEventListener('click', () => {
     restart(datapart);
   });
 
-  renderMathInElement(document.body, {
-    delimiters: [
-      {left: '$$', right: '$$', display: true},
-      {left: '$', right: '$', display: false},
-      {left: '\\(', right: '\\)', display: false},
-      {left: '\\[', right: '\\]', display: true}
-    ],
-    throwOnError: false
-  });
-  
-  
 });
 
-function restart(datapart){
+function restart(){
   currentQuestionID = 0;
   correctAnswerCount = 0;
-  loadQuestions(datapart);
+  loadQuestions('teil-noten');
 }
 
-function loadQuestions(datapart) {
+function loadQuestions() {
   fetch("fragen.json")
   .then(response => {
     if (!response.ok) {
@@ -48,7 +32,7 @@ function loadQuestions(datapart) {
     return response.json();
   })
   .then(data => {
-    questions = data[datapart].slice(0);
+    questions = data['teil-noten'].slice(0);
     shuffleArray(questions);
     questions = questions.slice(0, questionsPerRound);
     displayQuestion();
@@ -59,17 +43,35 @@ function loadQuestions(datapart) {
 }
 
 function displayQuestion() {
+  const div= document.getElementById('notation');
   const frageElement = document.getElementById('frageAllgWissen');
   const antwortContainer = document.getElementById('antwortContainer');
-  
+  div.innerHTML = '';
+  frageElement.innerHTML = '';
+
   if (currentQuestionID < questionsPerRound) {
     const currentQuestion = questions[currentQuestionID];
     const correctAnswer = currentQuestion.l[0];
+    const note = currentQuestion.a;
+    console.log(note);
 
-    frageElement.innerHTML = currentQuestion.a;
+    const renderer = new Vex.Flow.Renderer(notation, Vex.Flow.Renderer.Backends.SVG);
+    renderer.resize(500, 200); // Anpassen der Größe
+    const context = renderer.getContext();
+
+    const stave = new Vex.Flow.Stave(10, 40, 400);
+    stave.addClef('treble').addTimeSignature('4/4').setContext(context).draw();
+
+    const staveNote = new Vex.Flow.StaveNote({
+      clef: 'treble',
+      keys: [note],
+      duration: 'q'
+    });
+
+    Vex.Flow.Formatter.FormatAndDraw(context, stave, [staveNote]);
 
     const shuffledAnswers = shuffleArray(currentQuestion.l.slice(0));
-
+    frageElement.innerHTML= 'Welche Note ist das?'
     antwortContainer.innerHTML = '';
     shuffledAnswers.forEach((answer, i) => {
       const antwortButton = document.createElement('button');
@@ -81,26 +83,6 @@ function displayQuestion() {
 
     styleButtons();
     updateProgress();
-
-    renderMathInElement(frageElement, {
-      delimiters: [
-        {left: '$$', right: '$$', display: true},
-        {left: '$', right: '$', display: false},
-        {left: '\\(', right: '\\)', display: false},
-        {left: '\\[', right: '\\]', display: true}
-      ],
-      throwOnError: false
-    });
-    renderMathInElement(antwortContainer, {
-      delimiters: [
-        {left: '$$', right: '$$', display: true},
-        {left: '$', right: '$', display: false},
-        {left: '\\(', right: '\\)', display: false},
-        {left: '\\[', right: '\\]', display: true}
-      ],
-      throwOnError: false
-
-    });
 
 
   } else {
@@ -132,6 +114,7 @@ function showScore() {
 async function handleAnswer(selectedAnswer, isCorrect) {
   markAnswer(selectedAnswer, isCorrect);
   await sleep(answerDelay);
+
 
   if (isCorrect) {
     console.log('Richtig');

@@ -7,7 +7,7 @@
     <meta name="author" content="Hai Van Nguyen">
     <link rel="icon" href="/cat-playing.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
-    <script src="https://unpkg.com/vexflow/releases/vexflow-min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vexflow@4.2.2/build/cjs/vexflow.js"></script>
     <title>'Noten lernen</title>
 </head>
 
@@ -18,14 +18,14 @@
         <p class="h1">Musik Noten</p>
     </header>
 
-    <main class="main" data-part="teil-noten">
+    <main class="main">
 
     
 
     <div id="frageContainer" class="fragecontainer">
-        
-        <p id="frageAllgWissen"></p>
 
+        <p id="frageAllgWissen"></p>
+        <div id="notation"></div>
         <div id="antwortContainer" class="antwortcontainer"></div>
 
     </div> 
@@ -45,7 +45,7 @@
         Website von Hai Van Nguyen
     </footer>
 
-    <script src="main.js" defer></script>
+    <script src="vexflow.js" defer></script>
 
 
 <script>
